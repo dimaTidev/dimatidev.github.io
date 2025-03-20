@@ -1,0 +1,23 @@
+.context-menu{
+    z-index: 1000;
+
+    background-color: #4c4c4c;
+    border: 1px solid #8c8c8c;
+    border-radius: 6px;
+    box-shadow: 0 2px 20px #2c2c2c;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.context-menu-button-entry{
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    outline: none;
+}
+
+.context-menu-button-entry:hover{
+    background-color: #6c6c6c;
+}

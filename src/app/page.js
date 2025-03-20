@@ -1,31 +1,42 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-// Blocks
-import Header from "./Blocks/header";
-import MainBlock from "./Blocks/MainBlock/mainPageBlock";
-import TechStack from "./Blocks/techStack";
-import ContentBlock from "./Blocks/ContentBlock/contentBlock";
-import Footer from "./Blocks/footer";
-import ProjectsViewer from "./pages/gameDev/projectsViewer";
-
-// Data
-import { CategoryData } from "./Blocks/ContentBlock/contentData"
+import Styles from "./page.module.css";
+import AboutMe, { AboutMeLoading } from "./Components/aboutMe";
+import AllProjects from "./Components/allProjects";
+import { Suspense, useEffect } from "react";
+import Fade from "@/lib/UIComponents/fadeIn";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <Header/>
-      <MainBlock/>
-      <TechStack/>
-      {/* {CategoryData.map((element, i) =>{
-        return (
-          <ContentBlock isReverced={i % 2 == 0} title={element.Title} description={element.Description} href={element.Href} key={i}/>
-        );
-      })} */}
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-      <ProjectsViewer/>
-      <Footer/>
-    </main>
+  // Redirect to the project page
+  useEffect(() => {
+    const projectToOpen = searchParams.get('project');
+    if (projectToOpen) router.replace(`projectDetails?id=${projectToOpen}`);
+  }, []);
+
+  return (
+    <>
+      <div className={Styles.pageWrapper}>
+        <div className={Styles.page}>
+          <div className={Styles.leftSidePanel}>
+            <Suspense fallback={<AboutMeLoading/>}>
+              <Fade style={{height: "100%"}}>
+                <AboutMe style={{position: "sticky", top: "20px"}}/>
+              </Fade>
+            </Suspense>
+          </div>
+          <div className={Styles.mainPanel}>
+                {/* 
+                // TODO: make the featured ptojects work
+                <FeaturedProjects style={{flexShrink: "0"}}/> 
+                */}
+                <AllProjects/>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

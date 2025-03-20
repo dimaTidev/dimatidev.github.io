@@ -1,0 +1,18 @@
+/* https://stackoverflow.com/questions/41609792/css-animation-let-images-fade-in-one-after-another */
+
+.fadeIn {
+    opacity: 0;
+    animation-name: fadeInKeyFrames;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+@keyframes fadeInKeyFrames {
+    from {
+      opacity: 0;
+    }
+    
+    to {
+      opacity: 1;
+    }
+}

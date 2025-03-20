@@ -1,0 +1,88 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-foreground-200: #28292B;
+        --color-foreground-300: #38393B;
+        --color-foreground-400: #444444;
+        --color-foreground-500: #545454;
+        --color-foreground-600: #646464;
+        --color-foreground-700: #747474;
+        --color-foreground-800: #848484;
+        --color-foreground-1000: #BBBBBB;
+        --color-foreground-1200: #FFFFFF;
+
+        --color-background: #141516;
+        --color-background-secondary: #1E1F21;
+
+        --color-primary: #0C8CE9; /* #314bd4 */
+        --color-primary-hover: #0A6DC2;
+        --color-primary-pressed: #0965B3;
+        --color-primary-secondary: #105CAD;
+        --color-primary-tertiary: #394360;
+
+        /* Error Colors */
+        --color-error-1000: #ffccd5;
+        --color-error-700: #ff7a91;
+        --color-error: #f61b56;
+        --color-error-hover: #ff3f5f;
+        --color-error-pressed: #e6003e;
+        --color-error-secondary: #d4002c;
+        --color-error-tertiary: #98001c;
+        --color-error-quaternary: #660012;
+
+        /* Warning Colors */
+        --color-warning-1000: #fff4e0;
+        --color-warning-700: #ffd993;
+        --color-warning: #f4a62c;
+        --color-warning-hover: #f6b040;
+        --color-warning-pressed: #e08c1e;
+        --color-warning-secondary: #cc7d1a;
+        --color-warning-tertiary: #b26b15;
+        --color-warning-quaternary: #975402;
+
+        /* Success Colors */
+        --color-success-1000: #d6ffd6;
+        --color-success-700: #6bf66b;
+        --color-success: #52bd52;
+        --color-success-hover: #66c566;
+        --color-success-pressed: #45a445;
+        --color-success-secondary: #3e943e;
+        --color-success-tertiary: #348034;
+        --color-success-quaternary: #016501;
+
+        --color-shadow: rgba(0, 0, 0, 0.6);
+
+
+        
+        /* !!! Obsolete !!! */
+        --color-border: #444444;
+        /* !!! Obsolete !!! */
+        --color-border-secondary: #525252;
+        /* !!! Obsolete !!! */
+        --color-border-quinary: #e0e0e0;
+
+        /* !!! Obsolete !!! */
+        --color-border-focus: #0C8CE9;
+
+        /* !!! Obsolete: use --color-foreground-300 instead !!! */
+        --color-foreground: #38393B;
+        /* !!! Obsolete: use --text-color instead !!! */
+        --color-text: #FFFFFF;
+        /* !!! Obsolete: use --text-color-secondary instead !!! */
+        --color-text-secondary: #BBBBBB;
+    }
+}
+
+/* 
+primary
+secondary
+tertiary
+quaternary
+quinary
+senary
+septenary
+octonary
+nonary
+denary
+undecary
+duodecary 
+*/

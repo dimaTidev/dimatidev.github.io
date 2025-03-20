@@ -1,0 +1,97 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.projectThumbnailWrapper{
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    position: relative;
+
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.projectThumbnail{
+    object-fit: cover;
+}
+
+.projectLabelInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.techSection{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.techContainer{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.screenshotsSection{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.mainScreenshotWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.mainScreenshot{
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 4 / 2;
+}
+
+.smallScreenshotContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 6px;
+}
+
+.smallScreenshot{
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100px;
+    aspect-ratio: 4 / 2;
+    position: relative;
+}
+
+
+.glowEffect{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 125%;
+    height: 115%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
+    opacity: 0.20;
+    z-index: 0;
+    filter: blur(60px);
+
+    pointer-events: none;
+}

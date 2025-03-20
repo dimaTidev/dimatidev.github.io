@@ -1,0 +1,7 @@
+.markdown h3{
+    margin-top: 28px;
+}
+
+.markdown p{
+    color: var(--text-color-secondary);
+}

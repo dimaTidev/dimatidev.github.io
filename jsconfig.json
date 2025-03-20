@@ -2,6 +2,10 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "jsx": "react-jsx",
+    "checkJs": true,
+    "allowJs": true,
+    "lib": ["es2015", "dom"]
   }
 }

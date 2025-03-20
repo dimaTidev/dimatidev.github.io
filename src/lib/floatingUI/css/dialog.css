@@ -1,0 +1,14 @@
+.dialog-heading{
+    
+}
+
+.dialog-description-area{
+    margin-top: 16px;
+}
+
+.dialog-buttons-area{
+    margin-top: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+.Menu {
+    background: var(--background-color-secondary);
+    border: 1px solid var(--background-border-color);
+    border-radius: 6px;
+    padding: 8px;
+
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    outline: 0;
+    overflow: hidden;
+
+    z-index: 9999;
+}
+
+.MenuItem{
+    width: 100%;
+    outline: 0;
+    cursor: pointer;
+    margin: 8px 0;
+  
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}

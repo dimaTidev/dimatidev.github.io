@@ -1,0 +1,139 @@
+.border{
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.base{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.main{
+    display: flex;
+    flex-direction: row;
+    gap: 6px; 
+
+    position: relative;
+}
+
+
+.bannerWrapper {
+    position: relative;
+    display: inline-block;
+    flex-grow: 1;
+}
+
+.banner{
+    composes: border;
+    background-color: grey;
+    flex-grow: 1;
+    aspect-ratio: 2 / 1;
+
+    position: relative;
+    z-index: 1;
+}
+
+.glowEffect{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 125%;
+    height: 115%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
+    opacity: 1;
+    z-index: 0;
+    filter: blur(60px);
+
+    pointer-events: none;
+}
+
+.smallBannersContainer{
+    width: 33%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px; 
+
+    flex-shrink: 0;
+
+    position: relative;
+    z-index: 1;
+}
+
+.descriptionBanner{
+    composes: border;
+    background-color: #0C0C0C;
+    
+    flex-grow: 1;
+
+    position: relative;
+}
+
+
+.descriptionImageBackground{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    filter: blur(1vw);
+}
+
+.description{
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+}
+
+.descriptionText{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.smallBannerRow{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    flex-shrink: 0; 
+    aspect-ratio: 4 / 1;
+}
+
+.smallBanner{
+    composes: border;
+    background-color: grey;
+    flex-basis: 0;
+    flex-grow: 1;
+
+    position: relative;
+}
+
+.smallBannerHalf{
+    composes: border;
+    background-color: grey;
+    flex-basis: 0;
+    flex-grow: 1;
+
+    /* transition: flex-grow 0.35s; */
+
+    position: relative;
+}

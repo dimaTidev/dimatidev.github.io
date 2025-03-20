@@ -1,0 +1,25 @@
+.section{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.teamMembersContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.teamMemberCard{
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.avatar {
+    width: 150px !important;
+    height: 150px !important;
+}

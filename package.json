@@ -1,5 +1,5 @@
 {
-  "name": "port",
+  "name": "new_portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "classnames": "^2.5.1",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18"
+    "@apollo/client": "^3.13.4",
+    "@floating-ui/react": "^0.27.5",
+    "@mdx-js/loader": "^3.1.0",
+    "@next/mdx": "^15.2.1",
+    "@types/react": "^19.0.10",
+    "graphql": "^16.10.0",
+    "next": "15.1.7",
+    "next-mdx-remote": "^5.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-loading-skeleton": "^3.5.0",
+    "remark-gfm": "^4.0.1",
+    "swiper": "^11.2.4"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7"
   }
 }

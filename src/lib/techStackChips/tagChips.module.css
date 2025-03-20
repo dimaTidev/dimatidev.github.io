@@ -1,0 +1,31 @@
+.chip{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    
+    border-radius: 100%;
+    padding: 2px 2px 2px 2px;
+}
+
+.chipQuiet{
+    border: 0px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.iconWrapper{
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+
+.size_S{
+    font-size: 12px;
+    padding: 0px 5px 0px 5px;
+}
+
+.size_S .icon{
+    width: 16px;
+    height: 16px;
+}
