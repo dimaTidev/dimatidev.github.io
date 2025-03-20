@@ -8,6 +8,33 @@ import Fade from "@/lib/UIComponents/fadeIn";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Home() {
+
+  return (
+    <>
+      <div className={Styles.pageWrapper}>
+        <div className={Styles.page}>
+          <div className={Styles.leftSidePanel}>
+            <Suspense fallback={<AboutMeLoading/>}>
+              <Fade style={{height: "100%"}}>
+                <Redirect/>
+                <AboutMe style={{position: "sticky", top: "20px"}}/>
+              </Fade>
+            </Suspense>
+          </div>
+          <div className={Styles.mainPanel}>
+                {/* 
+                // TODO: make the featured projects work
+                <FeaturedProjects style={{flexShrink: "0"}}/> 
+                */}
+                <AllProjects/>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Redirect(){
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -17,26 +44,5 @@ export default function Home() {
     if (projectToOpen) router.replace(`projectDetails?id=${projectToOpen}`);
   }, []);
 
-  return (
-    <>
-      <div className={Styles.pageWrapper}>
-        <div className={Styles.page}>
-          <div className={Styles.leftSidePanel}>
-            <Suspense fallback={<AboutMeLoading/>}>
-              <Fade style={{height: "100%"}}>
-                <AboutMe style={{position: "sticky", top: "20px"}}/>
-              </Fade>
-            </Suspense>
-          </div>
-          <div className={Styles.mainPanel}>
-                {/* 
-                // TODO: make the featured ptojects work
-                <FeaturedProjects style={{flexShrink: "0"}}/> 
-                */}
-                <AllProjects/>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  return <div/>
 }
