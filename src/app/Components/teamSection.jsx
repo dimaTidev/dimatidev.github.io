@@ -44,7 +44,7 @@ export function TeamMember({personData}){
         <div className={Styles.teamMemberCard}>
             <Avatar src={personData.avatarImageUrl} className={Styles.avatar}/>
             <p className="u-text-secondary">{personData.fullName}</p>
-            {personData?.positions?.map((position, id) => <p key={id}>{position}</p>)}
+            {personData?.positions?.map((position, id) => <p key={id} style={{ whiteSpace: 'pre-line', textAlign: "center" }}>{position}</p>)}
             <Socials linksArray={personData.socialLinks}/>
         </div>
     )

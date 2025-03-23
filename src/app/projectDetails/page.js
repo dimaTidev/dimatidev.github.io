@@ -200,20 +200,24 @@ function Page(){
                 <div className={StylesCommon.page}>
 
                     <div className={`${StylesCommon.leftSidePanel} ${Styles.leftSidePanel}`}>
-                        <AboutProject projectData={{
+                        <AboutProject 
+                        
+                        projectData={{
                             title: data.title,
                             previewImageUrl: data.previewImage?.asset.url,
                             collaborators: collaborators,
                             platforms: platforms,
                             techStack: techStack
-                        }} 
-                        
-                        style={{position: "sticky", top: "20px"}}/>
+                        }}
+                        style={{position: "sticky", top: "20px"}}>
+                            <Spacer size={SizeSpacer.S}/>
+                            {data.callOut && <Callout variant={Variant.WARNING}>{data.callOut}</Callout>}
+                        </AboutProject>
                     </div>
                     
                     <div className={StylesCommon.mainPanel}>
                         <div className={Styles.main}>
-                            {data.callOut && <Callout variant={Variant.WARNING}>{data.callOut}</Callout>}
+                            {/* {data.callOut && <Callout variant={Variant.WARNING}>{data.callOut}</Callout>} */}
                             
                             {galleryScreenshots && galleryScreenshots.length > 0 && 
                                 <ScreenshotSection projectData={{screenshots: galleryScreenshots}}/>
@@ -242,6 +246,7 @@ function Page(){
 /**
  * 
  * @param {Object} params 
+ * @param {*} params.children 
  * @param {Object} params.projectData 
  * @param {string} params.projectData.previewImageUrl
  * @param {string} params.projectData.title
@@ -249,7 +254,7 @@ function Page(){
  * @param {Array<{imageUrl: string}>} params.projectData.platforms
  * @param {Array<{imageUrl: string, title: string}>} params.projectData.techStack
  */
-function AboutProject({projectData, ...params}){
+function AboutProject({children, projectData, ...params}){
 
     return (
         <>
@@ -317,6 +322,8 @@ function AboutProject({projectData, ...params}){
                         </a>
                     </>
                 } */}
+
+                {children}
 
             </div>
         </>

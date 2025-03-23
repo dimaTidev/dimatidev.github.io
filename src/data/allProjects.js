@@ -7,6 +7,7 @@ import { projectCoc2 } from "./projects/coc2";
 import { projectContentAI } from "./projects/contentAI";
 import { projectCrazyMashines } from "./projects/crazyMachines";
 import { projectFoesio } from "./projects/foesio";
+import { projectForgeflow } from "./projects/forgeflow";
 import { projectHideio } from "./projects/hideio";
 import { projectMusicHeroRacer } from "./projects/musicHeroRacer";
 import { projectNetworkBattleships } from "./projects/networkBattleships";
@@ -36,6 +37,7 @@ const AllProjectsData = [
     projectBcl2,
     projectBcl,
     projectSlimeAttack,
+    projectForgeflow,
 ]
 
 export default AllProjectsData;

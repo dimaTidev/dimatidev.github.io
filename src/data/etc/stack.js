@@ -22,3 +22,8 @@ export const stackJavaScript = {
     title: "Java script",
     icon: { asset:{ url: `data/stack/javaScript.svg` }},
 }
+
+export const stackNodeJs = {
+    title: "Node js",
+    icon: { asset:{ url: `data/stack/nodejs.svg` }},
+}
