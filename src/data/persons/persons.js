@@ -61,3 +61,33 @@ export const person_chafik = {
         }
     }
 }
+
+export const person_nastya = {
+    id: "anastasiiya-vasylevych",
+    fullName: "Anastasiiya Vasylevych",
+    shortAboutMe: "Designer, web developer",
+    location: "Toronto, Canada",
+    socialLinks: [
+        `https://www.linkedin.com/in/anastasia-vasilevich/`,    
+    ],
+    avatarImage:{
+        asset:{
+            url: FixImagePath("/data/persons/nastya.png")
+        }
+    }
+}
+
+export const person_eugenyiriev = {
+    id: "eugen-yiriev",
+    fullName: "Eugen Yiriev",
+    shortAboutMe: "Web developer",
+    location: "Bucharest, Romania",
+    socialLinks: [
+        `https://github.com/EugenYiriev`,    
+    ],
+    avatarImage:{
+        asset:{
+            url: FixImagePath("/data/persons/eugenYiriev.webp")
+        }
+    }
+}

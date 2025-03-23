@@ -9,7 +9,7 @@ export const projectRiskManagement = {
     id: { 
         current: "risk-management-tool" 
     }, 
-    title: "Bybit risk management",
+    title: "Trades management",
     description: `A simple tool to manage risk in futures positions on Bybit. Automatically calculates your wanted risk in your position with given stop loss swing and also places take profit with given RR.`,
     orderRank: 98,
     team:[
