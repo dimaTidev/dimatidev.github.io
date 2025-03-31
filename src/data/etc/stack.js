@@ -27,3 +27,23 @@ export const stackNodeJs = {
     title: "Node js",
     icon: { asset:{ url: `data/stack/nodejs.svg` }},
 }
+
+export const stackApollo = {
+    title: "Apollo",
+    icon: { asset:{ url: `data/stack/apollographql.svg` }},
+}
+
+export const stackAntd = {
+    title: "Antd",
+    icon: { asset:{ url: `data/stack/antDesign.svg` }},
+}
+
+export const stackNextAuth = {
+    title: "Next auth",
+    icon: { asset:{ url: `data/stack/nextAuth.svg` }},
+}
+
+export const stackReactFlow = {
+    title: "React flow",
+    icon: { asset:{ url: `data/stack/reactFlow.svg` }},
+}
