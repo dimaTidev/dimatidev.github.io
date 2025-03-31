@@ -7,11 +7,8 @@ export default function ShowMoreSection({children, ...params}) {
     const [isExpanded, setExpanded] = useState(false)
   return (
     <div className={`${Styles.notExpanded} ${isExpanded && Styles.expanded}`} {...params}>
-        <div className={Styles.contentBlock}>
-            <div className={Styles.contentBlockWrapper}>
-                {children}
-                {!isExpanded && <div className={Styles.gradient}/>}
-            </div>
+        <div className={`${!isExpanded && Styles.gradientTransparemt} ${Styles.contentBlock}`}>
+            {children}
         </div>
 
         <Button className={Styles.expandButton} onClick={() => setExpanded((s) => !s)} size={Size.S} variant={Variant.SECONDARY} quiet={true}>

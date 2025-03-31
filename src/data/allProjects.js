@@ -11,6 +11,7 @@ import { projectForgeflow } from "./projects/forgeflow";
 import { projectHideio } from "./projects/hideio";
 import { projectMusicHeroRacer } from "./projects/musicHeroRacer";
 import { projectNetworkBattleships } from "./projects/networkBattleships";
+import { projectReposMap } from "./projects/reposMap";
 import { projectRiskManagement } from "./projects/riskManagement";
 import { projectSas } from "./projects/sas";
 import { projectSlimeAttack } from "./projects/slimeAttack";
@@ -38,6 +39,7 @@ const AllProjectsData = [
     projectBcl,
     projectSlimeAttack,
     projectForgeflow,
+    projectReposMap
 ]
 
 export default AllProjectsData;
