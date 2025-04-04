@@ -3,9 +3,15 @@ import AboutMe, { AboutMeLoading } from "../Components/aboutMe";
 import AllProjectsSection from "../Components/allProjectsSection";
 import { Suspense } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
-import RedirectToProject from "@/Components/redirectToProject";
+import { redirect } from 'next/navigation'
 
-export default async function Home() {
+export default async function Home({ searchParams }) {
+
+  const { project } = await searchParams
+  if(project){
+    redirect(`/projectDetails?id=${project}`)
+  }
+
   return (
     <>
       <div className={Styles.pageWrapper}>
@@ -13,8 +19,6 @@ export default async function Home() {
           <div className={Styles.leftSidePanel}>
             <Suspense fallback={<AboutMeLoading/>}>
               <Fade style={{height: "100%"}}>
-                {/* TODO: replace redirects with a middleware! */}
-                <RedirectToProject/>
                 <AboutMe style={{position: "sticky", top: "20px"}}/>
               </Fade>
             </Suspense>
