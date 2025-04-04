@@ -5,9 +5,8 @@ import "@/styles/lightTheme.css";
 import "@/styles/alias.css";
 import "@/styles/utilityClasses.css";
 import "@/styles/overrides.css";
-import CommonContexts from "./commonContexts";
-import Header from "../Components/header";
-import Footer from "../Components/footer";
+import Header from "@/Components/header";
+import Footer from "@/Components/footer";
 
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -30,6 +29,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
           <div className="page-layout">
             <SkeletonTheme
@@ -38,16 +38,13 @@ export default function RootLayout({ children }) {
                 borderRadius="0.5rem"
                 duration={1}
             >
-              <CommonContexts>
-                <Header className="u-page-padding"/>
-                  {children}
-                  <div className="page-expander"/>
-                <Footer className="u-page-padding"/>
-              </CommonContexts>
+              <Header className="u-page-padding"/>
+                {children}
+                <div className="page-expander"/>
+              <Footer className="u-page-padding"/>
             </SkeletonTheme>
           </div>
       </body>
-      
     </html>
   );
 }
