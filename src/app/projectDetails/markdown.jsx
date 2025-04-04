@@ -59,9 +59,6 @@ function Image({width=256, height=256, alt="", title="", imageMap}){
     if(imageMap == undefined)
         return;
 
-    console.log("imageMap", typeof imageMap);
-    
-
     const src = imageMap.get(alt);
     if(src == undefined || src == "")
         return;
