@@ -7,12 +7,6 @@ import { gql } from "@apollo/client";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
 
 export default async function AllProjectsSection() {
-    const dataRes = await apolloServerClient.query({
-        query: GET_PROJECTS,
-    });
-
-    // const { data } = useSuspenseQuery(GET_PROJECTS, { returnPartialData: true });
-
     return (
         <div className={Styles.base}>
             <h2>Projects</h2>
@@ -22,10 +16,22 @@ export default async function AllProjectsSection() {
                 </div>
             )}>
                 <Fade className={Styles.projectsGrid}>
-                    <ProjectList allProjects={dataRes?.data?.allProject ?? []}/>
+                    <AllProjectsList />
                 </Fade>
             </Suspense>
         </div>
+    )
+}
+
+async function AllProjectsList() {
+    const dataRes = await apolloServerClient.query({
+        query: GET_PROJECTS,
+    });
+
+    // const { data } = useSuspenseQuery(GET_PROJECTS, { returnPartialData: true });
+
+    return (
+        <ProjectList allProjects={dataRes?.data?.allProject ?? []}/>
     )
 }
 
