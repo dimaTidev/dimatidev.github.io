@@ -6,8 +6,8 @@ import "@/styles/alias.css";
 import "@/styles/utilityClasses.css";
 import "@/styles/overrides.css";
 import CommonContexts from "./commonContexts";
-import Header from "./Components/header";
-import Footer from "./Components/footer";
+import Header from "../Components/header";
+import Footer from "../Components/footer";
 
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'

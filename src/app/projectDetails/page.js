@@ -5,11 +5,11 @@ import Styles from "./page.module.css";
 import { Size, Variant } from "@/lib/UIComponents/uiCommon";
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from "react";
-import { TeamSection } from "../Components/teamSection";
+import { TeamSection } from "../../Components/teamSection";
 import { Chip } from "@/lib/techStackChips/techStackChips";
 
 import SwiperGallery from "./swiperGallery";
-import ShowMoreSection from "../Components/showMoreSection";
+import ShowMoreSection from "../../Components/showMoreSection";
 import Markdown from "./markdown";
 import Image from "next/image";
 import Collaborators from "@/lib/UIComponents/collaborators";

@@ -1,8 +1,8 @@
 'use client'
 
 import Styles from "./page.module.css";
-import AboutMe, { AboutMeLoading } from "./Components/aboutMe";
-import AllProjects from "./Components/allProjects";
+import AboutMe, { AboutMeLoading } from "../Components/aboutMe";
+import AllProjects from "../Components/allProjects";
 import { Suspense, useEffect } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
 import { useRouter, useSearchParams } from "next/navigation";
