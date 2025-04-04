@@ -24,13 +24,13 @@ import apolloServerClient from "@/lib/apollo/apolloServerClient";
 export default async function ProjectDetailsPage({ searchParams }) {
 
     // TODO: if no id, return 404
-    const projectId = searchParams.id;
-    if(!projectId) return <p>404</p>;
+    const { id } = await searchParams
+    if(!id) return <p>404</p>;
 
     return(
         <Suspense fallback={<PageLoading/>}>
             <Fade>
-                <Page projectId={projectId}/>
+                <Page projectId={id}/>
             </Fade>
         </Suspense>
     )
