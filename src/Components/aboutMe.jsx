@@ -10,40 +10,6 @@ import apolloServerClient from '@/lib/apollo/apolloServerClient';
 
 import Skeleton from 'react-loading-skeleton'
 
-export const GET_ABOUT_ME = gql`
-  query GetAboutMe {
-    AboutMe(id: "aboutMe") {
-      person {
-        email
-        socialLinks
-        shortAboutMe
-        location
-        fullName
-        avatarImage {
-          asset{
-            url
-          }
-        }
-      }
-      resumeUrl
-    }
-  }
-`;
-
-export function AboutMeLoading(params){
-  return (
-    <div className={Styles.base} {...params}>
-      <Avatar style={{width: "100%", height: "auto"}}>
-        {/* TODO: The avatar rounded skeleton is off, fix it */}
-        <Skeleton circle height="100%" containerClassName="u-width-heigth-100perc"/>
-      </Avatar>
-
-      <h2><Skeleton/></h2>
-      <p><Skeleton/></p>
-    </div>
-  )
-}
-
 export default async function AboutMe(params) {
   const dataRes = await apolloServerClient.query({
     query: GET_ABOUT_ME,
@@ -95,3 +61,37 @@ export default async function AboutMe(params) {
     </div>
   )
 }
+
+export function AboutMeLoading(params){
+  return (
+    <div className={Styles.base} {...params}>
+      <Avatar style={{width: "100%", height: "auto"}}>
+        {/* TODO: The avatar rounded skeleton is off, fix it */}
+        <Skeleton circle height="100%" containerClassName="u-width-heigth-100perc"/>
+      </Avatar>
+
+      <h2><Skeleton/></h2>
+      <p><Skeleton/></p>
+    </div>
+  )
+}
+
+export const GET_ABOUT_ME = gql`
+  query GetAboutMe {
+    AboutMe(id: "aboutMe") {
+      person {
+        email
+        socialLinks
+        shortAboutMe
+        location
+        fullName
+        avatarImage {
+          asset{
+            url
+          }
+        }
+      }
+      resumeUrl
+    }
+  }
+`;

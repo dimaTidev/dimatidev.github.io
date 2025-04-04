@@ -1,6 +1,6 @@
 import Styles from "./page.module.css";
 import AboutMe, { AboutMeLoading } from "../Components/aboutMe";
-import AllProjects from "../Components/allProjects";
+import AllProjectsSection from "../Components/allProjectsSection";
 import { Suspense } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
 import RedirectToProject from "@/Components/redirectToProject";
@@ -24,7 +24,7 @@ export default async function Home() {
                 // TODO: make the featured projects work
                 <FeaturedProjects style={{flexShrink: "0"}}/> 
                 */}
-                {/* <AllProjects/> */}
+                <AllProjectsSection/>
           </div>
         </div>
       </div>
