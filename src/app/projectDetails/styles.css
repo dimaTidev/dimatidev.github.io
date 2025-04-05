@@ -102,3 +102,50 @@
   .swiper-button-disabled{
     visibility: hidden;
   }
+
+.swiper-gallery__main-navigation-button-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.swiper-gallery__main-navigation-button-prev{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+
+  background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+  
+  z-index: 1;
+
+
+}
+
+.swiper-gallery__main-navigation-button-next{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+
+  background: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
+
+  z-index: 1;
+}
+
+.swiper-gallery__main-navigation-button-wrapper{
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.mainSwiper:hover .swiper-gallery__main-navigation-button-wrapper{
+  opacity: 1;
+}
+
+
+.swiper-gallery-thumbnails .swiper-wrapper{
+  justify-content: center;
+}
