@@ -1,13 +1,16 @@
-'use client'
-
 import Styles from "./page.module.css";
-import AboutMe, { AboutMeLoading } from "./Components/aboutMe";
-import AllProjects from "./Components/allProjects";
-import { Suspense, useEffect } from "react";
+import AboutMe, { AboutMeLoading } from "@/Components/aboutMe";
+import AllProjectsSection from "@/Components/allProjectsSection";
+import { Suspense } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
-import { useRouter, useSearchParams } from "next/navigation";
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+
+  const { project } = await searchParams
+  if(project){
+    redirect(`/projectDetails?id=${project}`)
+  }
 
   return (
     <>
@@ -16,7 +19,6 @@ export default function Home() {
           <div className={Styles.leftSidePanel}>
             <Suspense fallback={<AboutMeLoading/>}>
               <Fade style={{height: "100%"}}>
-                <Redirect/>
                 <AboutMe style={{position: "sticky", top: "20px"}}/>
               </Fade>
             </Suspense>
@@ -26,23 +28,10 @@ export default function Home() {
                 // TODO: make the featured projects work
                 <FeaturedProjects style={{flexShrink: "0"}}/> 
                 */}
-                <AllProjects/>
+                <AllProjectsSection/>
           </div>
         </div>
       </div>
     </>
   );
-}
-
-function Redirect(){
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  // Redirect to the project page
-  useEffect(() => {
-    const projectToOpen = searchParams.get('project');
-    if (projectToOpen) router.replace(`projectDetails?id=${projectToOpen}`);
-  }, []);
-
-  return <div/>
 }

@@ -1,84 +1,35 @@
-'use client';
-
 import StylesCommon from "@/app/page.module.css";
 import Styles from "./page.module.css";
 import { Size, Variant } from "@/lib/UIComponents/uiCommon";
-import { useSearchParams } from 'next/navigation';
 import { Suspense } from "react";
-import { TeamSection } from "../Components/teamSection";
+import { TeamSection } from "@/Components/teamSection";
 import { Chip } from "@/lib/techStackChips/techStackChips";
-
 import SwiperGallery from "./swiperGallery";
-import ShowMoreSection from "../Components/showMoreSection";
+import ShowMoreSection from "@/Components/showMoreSection";
 import Markdown from "./markdown";
 import Image from "next/image";
 import Collaborators from "@/lib/UIComponents/collaborators";
 import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
 import Skeleton from "react-loading-skeleton";
-import { gql, useSuspenseQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Callout from "@/lib/UIComponents/callout";
-
-const GET_PROJECT = gql`
-  query GetProjectDetails($projectId: String){
-    allProject(where: { id: { current: { eq: $projectId } } }) {
-        title
-        description
-        team {
-            position
-            person {
-                fullName
-                socialLinks
-                email
-                avatarImage {
-                    asset {
-                        url
-                    }
-                }
-            }
-        }    
-        postRaw
-        postImages
-        previewImage {
-            asset {
-            url
-            }
-        }
-        techStack {
-            title
-            icon {
-            asset {
-                url
-            }
-            }
-        }
-        platforms {
-            icon {
-            asset {
-                url
-            }
-            }
-        }
-        videoLinks
-        galleryScreenshots {
-            asset {
-                url
-            }
-        }
-        callOut
-    }
-  }
-`;
+import apolloServerClient from "@/lib/apollo/apolloServerClient";
 
 // To test markdown
 // const testMarkdown = `
 // `
 
-export default function ProjectDetailsPage() {
+export default async function ProjectDetailsPage({ searchParams }) {
+
+    // TODO: if no id, return 404
+    const { id } = await searchParams
+    if(!id) return <p>404</p>;
+
     return(
         <Suspense fallback={<PageLoading/>}>
             <Fade>
-                <Page/>
+                <Page projectId={id}/>
             </Fade>
         </Suspense>
     )
@@ -130,21 +81,16 @@ function PageLoading(){
     );
 }
 
-function Page(){
-    const searchParams = useSearchParams();
-    const id = searchParams.get('id');
-
-    const { data: queryData } = useSuspenseQuery(GET_PROJECT, {
-        variables: { projectId: id }, 
-        skip: !id, // Prevents query from running if id is undefined
-        returnPartialData: true,
+async function Page({ projectId }){
+    const dataRes = await apolloServerClient.query({
+        query: GET_PROJECT,
+        variables: { projectId: projectId },
     });
 
-    // console.log("queryData project:", JSON.stringify(queryData, undefined, 2));
-    // return;
+    const queryData = dataRes?.data;
 
     // TODO: return 404
-    if (!queryData) return <p>Loading...</p>;
+    if (!queryData) return <p>404</p>;
 
     const data = queryData.allProject[0];
 
@@ -244,7 +190,6 @@ function Page(){
 }
 
 /**
- * 
  * @param {Object} params 
  * @param {*} params.children 
  * @param {Object} params.projectData 
@@ -344,3 +289,54 @@ function ScreenshotSection({projectData}){
         </div>  
     )
 }
+
+const GET_PROJECT = gql`
+  query GetProjectDetails($projectId: String){
+    allProject(where: { id: { current: { eq: $projectId } } }) {
+        title
+        description
+        team {
+            position
+            person {
+                fullName
+                socialLinks
+                email
+                avatarImage {
+                    asset {
+                        url
+                    }
+                }
+            }
+        }    
+        postRaw
+        postImages
+        previewImage {
+            asset {
+            url
+            }
+        }
+        techStack {
+            title
+            icon {
+            asset {
+                url
+            }
+            }
+        }
+        platforms {
+            icon {
+            asset {
+                url
+            }
+            }
+        }
+        videoLinks
+        galleryScreenshots {
+            asset {
+                url
+            }
+        }
+        callOut
+    }
+  }
+`;

@@ -6,63 +6,6 @@ import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client';
 const aboutMeVar = makeVar(aboutMeData);
 
 const allProjectVar = makeVar(AllProjectsData);
-// const allProjectVar = makeVar([
-//     { 
-//         id: { 
-//             current: "1" 
-//         }, 
-//         title: "Project One",
-//         description: "description",
-//         orderRank: 1,
-//         team:[
-//             {
-//                 person:{
-//                     fullName: "jake",
-//                     socialLinks: [],
-//                     email: "",
-//                     avatarImage:{
-//                         asset:{
-//                             url: "next.svg"
-//                         }
-//                     }
-//                 }
-//             }
-//         ],
-//         postRaw: [],
-//         previewImage:{
-//             asset:{
-//                 url: "next.svg"
-//             }
-//         },
-//         previewAnimation:{
-//             asset:{
-//                 url: "next.svg"
-//             }
-//         },
-//         videoLinks: [],
-//         galleryScreenshots: [],
-//         callOut: "This is the test",
-//         techStack:[
-//            {
-//                 title: "hello",
-//                 icon:{
-//                     asset:{
-//                         url: "file.svg"
-//                     }
-//                 },
-//            }
-//         ],
-//         platforms:[
-//             {
-//                 icon:{
-//                     asset:{
-//                         url: "window.svg"
-//                     }
-//                 }   
-//             }
-//         ]
-//     },
-// ]);
 
 const createTypePolicies = (fields) => ({
     Query: {
@@ -125,7 +68,13 @@ const vars = {
 const client = new ApolloClient({
   cache: new InMemoryCache({
     typePolicies: createTypePolicies(Object.keys(vars)) // Pass keys dynamically
-  })
+  }),
+  defaultOptions:{
+    query:{
+      errorPolicy: "all",
+      fetchPolicy: "cache-only"
+    }
+  }
 });
 
 export default client;

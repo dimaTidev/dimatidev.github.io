@@ -1,30 +1,16 @@
-'use client';
-
 import Socials from "@/lib/socials/socials";
 import Styles from "./header.module.css";
-import { Suspense, useContext } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
-import ActionButton from "@/lib/UIComponents/ActionButton";
 import { Size, Variant } from "@/lib/UIComponents/uiCommon";
 import Button from "@/lib/UIComponents/Button";
 import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
-import { gql, useSuspenseQuery } from "@apollo/client";
+import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
+import apolloServerClient from "@/lib/apollo/apolloServerClient";
 
-const GET_PERSON = gql`
-  query GetPerson {
-    AboutMe(id: "aboutMe") {
-      person {
-        email
-        socialLinks
-      }
-      resumeUrl
-    }
-  }
-`;
-
-export default function Header({className}) {
+export default async function Header({className}) {
   return (
     <div className={`${Styles.header} ${className}`}>
         <Suspense fallback={<HeaderLoading/>}>
@@ -44,19 +30,22 @@ function HeaderLoading(){
   )
 }
 
-function HeaderContent(){
-  console.log("Render header");
-  // return;
-  const { data: queryData } = useSuspenseQuery(GET_PERSON);
+async function HeaderContent(){
+  const dataRes = await apolloServerClient.query({
+    query: GET_PERSON,
+  });
   
-  const data = queryData.AboutMe;
+  const data = dataRes?.data?.AboutMe;
 
   const socialLinks = [];
-  if(data.person.email){
+  if(data?.person?.email){
     socialLinks.push(data.person.email);
   }
-  socialLinks.push(...data.person.socialLinks);
 
+  if(data?.person?.socialLinks){
+    socialLinks.push(...data.person.socialLinks);
+  }
+  
   return (
     <>
         <Socials linksArray={socialLinks}/>
@@ -71,3 +60,15 @@ function HeaderContent(){
     </>
   )
 }
+
+const GET_PERSON = gql`
+  query GetPerson {
+    AboutMe(id: "aboutMe") {
+      person {
+        email
+        socialLinks
+      }
+      resumeUrl
+    }
+  }
+`;

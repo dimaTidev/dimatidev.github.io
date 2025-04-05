@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react'
 import Styles from "./showMoreSection.module.css";
 import Button from '@/lib/UIComponents/Button';
