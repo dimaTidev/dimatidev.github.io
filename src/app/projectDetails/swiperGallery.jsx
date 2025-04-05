@@ -85,9 +85,6 @@ export default function SwiperGallery({items}) {
         </div>
       </div>
 
-
-
-
       <div className='u-layout_flex-row u-layout_flex-space-between-center gap-l u-width-100perc'>
 
         <Button variant={Variant.SECONDARY} className='swiper-thumbnail-button swiper-thumbnail-button-prev'>
@@ -105,7 +102,7 @@ export default function SwiperGallery({items}) {
           }}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
-          className="horizontal-thumbnails swiper-gallery-thumbnails"
+          className="swiper-gallery-horizontal-thumbnails swiper-gallery-thumbnails"
           style={{width: "2px", flexGrow: 1, justifyContent: "center"}}
         >
           {thumbnailsToDraw}
