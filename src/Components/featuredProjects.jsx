@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import Image from "next/image";
 import ActionButton from "@/lib/UIComponents/ActionButton";
 import { Size, Variant } from "@/lib/UIComponents/uiCommon";
-import Collaborators from "../lib/UIComponents/collaborators";
+import Collaborators from "@/lib/UIComponents/collaborators";
 import { PeopleContext } from "@/data/people/peopleContext";
 import { TechStackChip } from "@/lib/techStackChips/techStackChips";
 import Link from "next/link";

@@ -14,7 +14,6 @@ export default async function AboutMe(params) {
   const dataRes = await apolloServerClient.query({
     query: GET_ABOUT_ME,
   });
-  // { returnPartialData: true }
 
   const queryData = dataRes?.data;
 

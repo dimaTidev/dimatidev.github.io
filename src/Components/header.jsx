@@ -35,8 +35,6 @@ async function HeaderContent(){
     query: GET_PERSON,
   });
   
-  // const { data: queryData } = useSuspenseQuery(GET_PERSON);
-  
   const data = dataRes?.data?.AboutMe;
 
   const socialLinks = [];

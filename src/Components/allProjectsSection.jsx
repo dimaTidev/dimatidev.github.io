@@ -28,8 +28,6 @@ async function AllProjectsList() {
         query: GET_PROJECTS,
     });
 
-    // const { data } = useSuspenseQuery(GET_PROJECTS, { returnPartialData: true });
-
     return (
         <ProjectList allProjects={dataRes?.data?.allProject ?? []}/>
     )
