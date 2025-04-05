@@ -13,6 +13,7 @@ import Icon from "./icon";
  * @param {number} [props.variant=Size.Default] - The size of the button, either Size.S or Size.M.
  * @param {function} [props.onClick] - The click event handler for the button.
  * @param {boolean} [props.quiet=false] - Whether the button should be rendered in a quiet style.
+ * @param {string} [props.className]
  */
 export default function Button({
   children,
@@ -38,11 +39,11 @@ export default function Button({
 
   return (
     <button
-      className={`${StylesCommon.buttonBase} ${StylesCommon.baseHorizontal} ${buttonSizeClass} ${variantClass} ${quiet ? StylesCommon.quiet : ""} ${className}`}
+      className={`${StylesCommon.buttonBase} ${StylesCommon.baseHorizontal} ${buttonSizeClass} ${variantClass} ${quiet ? StylesCommon.quiet : ""} ${textClass} ${className}`}
       {...params}
     >
       <Icon src={src} alt={alt} size={size}/>
-      {children && <div className={textClass}>{children}</div>}
+      {children}
     </button>
   );
 }

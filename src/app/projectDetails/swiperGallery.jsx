@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -15,9 +15,14 @@ import './styles.css';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Image from 'next/image';
+import Button from '@/lib/UIComponents/Button';
+import {IconArrowLeft, IconArrowRight } from '@/lib/icons/icons';
+import { Variant } from '@/lib/UIComponents/uiCommon';
+import Fade from '@/lib/UIComponents/fadeIn';
 
 export default function SwiperGallery({items}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const thumbnailSwiperRef = useRef(undefined)
 
   const itemsToDraw = items.map((url, id) => {
     const isEmbededVideo = typeof url === "string" && url.toLowerCase().includes("youtube");
@@ -48,34 +53,67 @@ export default function SwiperGallery({items}) {
 
   return (
     <>
-      <Swiper
-        slidesPerView="auto"
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
-        loop={true}
-        spaceBetween={10}
-        navigation={true}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="mainSwiper"
-      >
-        {itemsToDraw}
-      </Swiper>
+      <div className='u-position-relative mainSwiper'>
+        <Swiper
+          slidesPerView="auto"
+          style={{
+            '--swiper-navigation-color': '#fff',
+            '--swiper-pagination-color': '#fff',
+          }}
+          loop={true}
+          spaceBetween={10}
+          navigation={{
+            nextEl: '.swiper-gallery__main-navigation-button-next',
+            prevEl: '.swiper-gallery__main-navigation-button-prev',
+          }}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs]}
+        >
+          {itemsToDraw}
+        </Swiper>
 
-      <Swiper
-        onSwiper={setThumbsSwiper}
-        spaceBetween={10}
-        slidesPerView="auto"
-        navigation={true}
-        watchSlidesProgress={true}
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="horizontal-thumbnails"
-        style={{width: "2px", minWidth: "100%"}}
-      >
-        {thumbnailsToDraw}
-      </Swiper>
+        <div className="swiper-gallery__main-navigation-button-wrapper swiper-gallery__main-navigation-button-prev u-events-none">
+          <Button variant={Variant.SECONDARY} className="u-events-all" quiet>
+            <IconArrowLeft />
+          </Button>
+        </div>
+
+        <div className="swiper-gallery__main-navigation-button-wrapper swiper-gallery__main-navigation-button-next u-events-none">
+          <Button variant={Variant.SECONDARY} className="u-events-all" quiet>
+            <IconArrowRight />
+          </Button>
+        </div>
+      </div>
+
+      <div className='u-layout_flex-row u-layout_flex-space-between-center gap-l u-width-100perc'>
+
+        <Button variant={Variant.SECONDARY} className='swiper-thumbnail-button swiper-thumbnail-button-prev'>
+          <IconArrowLeft />
+        </Button>
+
+        <Swiper
+          ref={thumbnailSwiperRef}
+          onSwiper={setThumbsSwiper}
+          spaceBetween={10}
+          slidesPerView="auto"
+          navigation={{
+            nextEl: '.swiper-thumbnail-button-next',
+            prevEl: '.swiper-thumbnail-button-prev',
+          }}
+          watchSlidesProgress={true}
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="swiper-gallery-horizontal-thumbnails swiper-gallery-thumbnails"
+          style={{width: "2px", flexGrow: 1, justifyContent: "center"}}
+        >
+          {thumbnailsToDraw}
+        </Swiper>
+
+        <Button variant={Variant.SECONDARY} className='swiper-thumbnail-button swiper-thumbnail-button-next'>
+          <IconArrowRight />
+        </Button>
+
+      </div>
+      
     </>
   );
 }
