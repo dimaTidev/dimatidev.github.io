@@ -100,5 +100,5 @@
   }
 
   .swiper-button-disabled{
-    display: none;
+    visibility: hidden;
   }

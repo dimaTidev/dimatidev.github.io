@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -15,9 +15,12 @@ import './styles.css';
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Image from 'next/image';
+import Button from '@/lib/UIComponents/Button';
+import {IconArrowLeft, IconArrowRight } from '@/lib/icons/icons';
 
 export default function SwiperGallery({items}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const thumbnailSwiperRef = useRef(undefined)
 
   const itemsToDraw = items.map((url, id) => {
     const isEmbededVideo = typeof url === "string" && url.toLowerCase().includes("youtube");
@@ -64,18 +67,33 @@ export default function SwiperGallery({items}) {
         {itemsToDraw}
       </Swiper>
 
+    <div className='u-layout_flex-row u-layout_flex-space-between-center gap-l u-width-100perc'>
+      <Button className='swiper-thumbnail-button swiper-thumbnail-button-prev'>
+        <IconArrowLeft />
+      </Button>
+
       <Swiper
+        ref={thumbnailSwiperRef}
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
         slidesPerView="auto"
-        navigation={true}
+        navigation={{
+          nextEl: '.swiper-thumbnail-button-next',
+          prevEl: '.swiper-thumbnail-button-prev',
+        }}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
         className="horizontal-thumbnails"
-        style={{width: "2px", minWidth: "100%"}}
+        style={{width: "2px", flexGrow: 1}}
       >
         {thumbnailsToDraw}
       </Swiper>
+
+      <Button className='swiper-thumbnail-button swiper-thumbnail-button-next'>
+        <IconArrowRight />
+      </Button>
+    </div>
+      
     </>
   );
 }
