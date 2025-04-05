@@ -1,4 +1,4 @@
-import Styles from "../allProjects.module.css";
+import Styles from "./projectCard.module.css";
 import Skeleton from "react-loading-skeleton";
 import Image from "next/image";
 import Collaborators from "@/lib/UIComponents/collaborators";

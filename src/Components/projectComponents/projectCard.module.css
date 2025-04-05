@@ -1,0 +1,85 @@
+.projectCardWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.projectCard{
+    background-color: #141414;
+    border: 1px solid #363636;
+
+    border-radius: 8px;
+    padding: 3px;
+
+    position: relative;
+    z-index: 1;
+    transition: transform 0.15s;
+}
+
+.projectCard:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.15s;
+}
+
+.projectCardWrapper:hover .overlay {
+    opacity: 1;
+}
+
+.overlayAnimation {
+    z-index: 1;
+}
+
+.glowEffect{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 110%;
+    height: 125%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
+    opacity: 0.5;
+    z-index: 0;
+    filter: blur(60px);
+
+    transition: opacity 0.15s;
+
+    pointer-events: none;
+}
+
+/* .projectCardWrapper:hover .glowEffect{
+    opacity: 1;
+} */
+
+.projectBanner{
+    border-radius: 6px;
+    /* height: 400px; */
+    aspect-ratio: 16 / 9;
+    width: 100%;
+
+    /* background-color: darkgrey; */
+
+    position: relative;
+    overflow: hidden;
+}
+
+.projectDescription{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    padding: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
