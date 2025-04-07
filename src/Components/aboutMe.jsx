@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import LocationIcon from '@mui/icons-material/LocationOn'
+import { FileDownload } from "@mui/icons-material";
 
 export default async function AboutMe(params) {
   const dataRes = await apolloServerClient.query({
@@ -52,7 +53,9 @@ export default async function AboutMe(params) {
       <Socials linksArray={socialLinks} style={{flexGrow: "1"}}/>
 
       {queryData?.AboutMe.resumeUrl && (
-        <Button href={queryData?.AboutMe.resumeUrl} variant="contained">Resume</Button>
+        <Button href={queryData?.AboutMe.resumeUrl} variant="contained" sx={{gap: "6px"}}>
+          <FileDownload fontSize="small"/> Download Resume
+        </Button>
       )}
     </div>
   )
