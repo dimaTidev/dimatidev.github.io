@@ -31,9 +31,15 @@ export default async function AboutMe(params) {
 
   return (
     <div className={Styles.base} {...params}>
-      <Avatar src={avatarUrl} style={{width: "100%", height: "auto", aspectRatio: "1"}}/>
-
-      <Typography variant="h5" fontWeight="700">{personData?.fullName}</Typography>
+      <div className={Styles.avatarContainer}>
+        {/* <Avatar src={avatarUrl} style={{width: "100%", height: "auto", aspectRatio: "1"}}/> */}
+        <Avatar src={avatarUrl} className={Styles.avatar}/>
+        <div className="u-layout_flex-column">
+          <Typography variant="h5" fontWeight="700">{personData?.fullName}</Typography>
+          <Typography variant="body1" className="u-text-secondary">Senior Full Stack Developer</Typography>
+        </div>
+      </div>
+      
       <Typography variant="body1" className="u-text-secondary">{personData?.shortAboutMe}</Typography>
 
       {personData?.location && (
