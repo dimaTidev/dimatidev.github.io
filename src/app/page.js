@@ -28,7 +28,7 @@ export default async function Home({ searchParams }) {
                 // TODO: make the featured projects work
                 <FeaturedProjects style={{flexShrink: "0"}}/> 
                 */}
-                {/* <AllProjectsSection/> */}
+                <AllProjectsSection/>
           </div>
         </div>
       </div>

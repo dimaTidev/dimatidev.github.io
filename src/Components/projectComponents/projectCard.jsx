@@ -1,23 +1,13 @@
 import Styles from "./projectCard.module.css";
 import Skeleton from "react-loading-skeleton";
 import Image from "next/image";
-import Collaborators from "@/lib/UIComponents/collaborators";
-import { Size } from "@/lib/UIComponents/uiCommon";
 import { Chip } from "@/lib/techStackChips/techStackChips";
 import Link from 'next/link';
+import { Typography } from "@mui/material";
+import ChipGroup from "@/lib/techStackChips/chipsGroup";
 
 export default async function ProjectCard({ projectData }){
     const glowColor = projectData?.color ?? "grey";
-
-    const collaborators = [];
-    projectData.team?.forEach(personData => {
-        const colabData = {
-            avatarImageUrl: personData.person?.avatarImage?.asset?.url
-        };
-        if(colabData == undefined)
-            return;
-        collaborators.push(colabData);
-    });
 
     const previewImageUrl = projectData.previewImage?.asset?.url;
     const previewAnimationUrl = projectData.previewAnimation?.asset?.url ?? previewImageUrl;
@@ -28,45 +18,21 @@ export default async function ProjectCard({ projectData }){
             <Link href={`/projectDetails?id=${projectData.id.current}`}>
                 <div className={Styles.projectCard}>
                     <div className={Styles.projectBanner}>
-                        {/* <div className={Styles.overlay} style={{backgroundColor: hexToRGBA(glowColor, 0.1)}}>
-                            <ActionButton variant={Variant.DEFAULT}>View project</ActionButton>
-                        </div> */}
-                        {previewImageUrl && <Image className={Styles.image} style={{objectFit: "cover"}} src={previewImageUrl} alt="" sizes={"auto"} fill/>}
+                        {previewImageUrl && <Image className={`${Styles.image}`} style={{objectFit: "cover"}} src={previewImageUrl} alt="" sizes={"auto"} fill/>}
                         {/* TODO: Optimize animation loading */}
                         {previewAnimationUrl && <Image className={`${Styles.overlay} ${Styles.overlayAnimation}`} style={{objectFit: "cover"}} src={previewAnimationUrl} alt="" sizes={"auto"} fill/>}
                     </div>
                     <div className={`${Styles.projectDescription} u-margin-s`}>
                         <div className="u-layout_flex-row u-layout_flex-space-between-center">
-                            <div className="u-layout_flex-row u-layout_flex-start-center gap-l">
-                                {collaborators.length > 0 && <Collaborators style={{opacity: "0.8"}} size={Size.XS} collaborators={collaborators}/>}
-                                <h4 className="u-text-secondary">{projectData.title}</h4>
-                            </div>
+                            <Typography variant="body2" className={Styles.projectTitle}>{projectData.title}</Typography>
                             {projectData.techStack && (
-                                <div className="u-layout_flex-row u-layout_flex-start-center" style={{opacity: "0.65"}}>
+                                <ChipGroup className="u-media-pc-only" style={{opacity: "0.65"}}>
                                     {projectData.techStack.map((el, id) => {
-                                        return <Chip key={id} icon={el.icon.asset.url}/>;
+                                        return <Chip key={id} size="large" isQuiet icon={el.icon.asset.url}/>;
                                     })}
-                                </div>
+                                </ChipGroup>
                             )}
                         </div>
-
-                        {/* <div className="u-layout_flex-row u-layout_flex-space-between-center" style={{opacity: "0.7"}}>
-                            {projectData.techStack && (
-                                <div className="u-layout_flex-row u-layout_flex-start-center">
-                                    {projectData.techStack.map((el, id) => {
-                                        return <Chip key={id} icon={el.icon.asset.url}/>;
-                                    })}
-                                </div>
-                            )}
-
-                            {projectData.platforms && (
-                                <div className="u-layout_flex-row u-layout_flex-start-center">
-                                    {projectData.platforms.map((el, id) => {
-                                        return <Chip key={id} icon={el.icon.asset.url}/>;
-                                    })}
-                                </div>
-                            )}
-                        </div> */}
                     </div>
                 </div>
             </Link>

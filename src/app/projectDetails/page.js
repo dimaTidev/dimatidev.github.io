@@ -218,7 +218,7 @@ function AboutProject({children, projectData, ...params}){
                         <p className="u-text-secondary">Platforms</p>
                             <div className="u-layout_flex-row u-layout_flex-start-center gap-xs">
                                 {projectData.platforms.map((el, id) => {
-                                    return <Chip key={id} icon={el.imageUrl} isWithoutLabel={true}/>;
+                                    return <Chip key={id} size="large" icon={el.imageUrl} isQuiet={true}/>;
                                 })}
                             </div>
                         </div>
@@ -243,7 +243,7 @@ function AboutProject({children, projectData, ...params}){
                             <div className="u-text-secondary">Stack</div>
                             <div className="u-layout_flex-row u-layout_flex-end-start gap-m u-layout_flex-wrap">
                                 {projectData.techStack.map((el, id) => {
-                                    return <Chip key={id} icon={el.imageUrl} title={el.title}/>;
+                                    return <Chip key={id} size="large" icon={el.imageUrl} title={el.title} isQuiet={true}/>;
                                 })}
                             </div>
                         </div>
