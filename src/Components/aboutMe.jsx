@@ -2,7 +2,6 @@ import Styles from "./aboutMe.module.css";
 import Socials from "@/lib/socials/socials";
 import { gql } from '@apollo/client';
 import apolloServerClient from '@/lib/apollo/apolloServerClient';
-
 import Skeleton from 'react-loading-skeleton'
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
