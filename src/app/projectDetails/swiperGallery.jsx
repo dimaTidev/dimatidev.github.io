@@ -18,7 +18,6 @@ import Image from 'next/image';
 import Button from '@/lib/UIComponents/Button';
 import {IconArrowLeft, IconArrowRight } from '@/lib/icons/icons';
 import { Variant } from '@/lib/UIComponents/uiCommon';
-import Fade from '@/lib/UIComponents/fadeIn';
 
 export default function SwiperGallery({items}) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
