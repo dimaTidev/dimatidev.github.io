@@ -52,7 +52,7 @@
 }
 
 .swiper-gallery-horizontal-thumbnails .swiper-slide {
-  height: 100px;
+  height: clamp(40px, 1rem + 10vw , 100px);
   width: auto;
   aspect-ratio: 16 / 9;
   opacity: 0.5;
