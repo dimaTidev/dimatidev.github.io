@@ -59,6 +59,11 @@
     width: 100px;
 }
 
+.u-clamped-width {
+    min-width: 100%;
+    width: 0;
+}
+
 .u-height-1rem{
     height: 1rem;
 }
