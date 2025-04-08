@@ -145,7 +145,7 @@ async function Page({ projectId }){
             <div className={StylesCommon.pageWrapper}>
                 <div className={StylesCommon.page}>
 
-                    <div className={`${StylesCommon.leftSidePanel} ${Styles.leftSidePanel}`}>
+                    <div className={`${StylesCommon.leftSidePanel} ${Styles.leftSidePanel} u-media-pc-only`}>
                         <AboutProject 
                         
                         projectData={{
