@@ -115,7 +115,7 @@
 
 
 @media (min-width: 1024px){
-    .u-media-modile-only{
+    .u-media-mobile-only{
         display: none;
     }
 }
