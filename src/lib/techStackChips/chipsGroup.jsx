@@ -2,9 +2,9 @@ import Styles from "./tagChips.module.css";
 
 /**
  * @param {object} params 
- * @param {*} params.children 
- * @param {string} params.className 
- * @param {"small" | "medium" | "large"} params.compact 
+ * @param {*} [params.children] 
+ * @param {string} [params.className] 
+ * @param {"small" | "medium" | "large"} [params.compact]
  * @returns 
  */
 export default function ChipGroup({ children, className, compact=undefined }) {

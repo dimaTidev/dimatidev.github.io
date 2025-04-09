@@ -53,7 +53,7 @@ export default async function AboutMe(params) {
       <Socials linksArray={socialLinks} style={{flexGrow: "1"}}/>
 
       {queryData?.AboutMe.resumeUrl && (
-        <Button href={queryData?.AboutMe.resumeUrl} variant="contained" sx={{gap: "6px"}}>
+        <Button href={queryData?.AboutMe.resumeUrl} variant="contained" color="primary" sx={{gap: "6px"}}>
           <FileDownload fontSize="small"/> Download Resume
         </Button>
       )}
