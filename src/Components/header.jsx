@@ -1,13 +1,11 @@
 import Socials from "@/lib/socials/socials";
 import Styles from "./header.module.css";
 import { Suspense } from "react";
-import Button from "@mui/material/Button";
 import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
 import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
-import { MailOutline } from "@mui/icons-material";
 import ButtonEmailMe from "./buttonEmailMe";
 
 export default async function Header({className="", headerClassName=""}) {

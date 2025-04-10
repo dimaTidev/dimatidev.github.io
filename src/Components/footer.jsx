@@ -5,8 +5,6 @@ import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
-import { Button } from "@mui/material";
-import { MailOutline } from "@mui/icons-material";
 import ButtonEmailMe from "./buttonEmailMe";
 
 export default async function Footer({className, footerClassName}) {
@@ -15,7 +13,7 @@ export default async function Footer({className, footerClassName}) {
         <div className={`${Styles.container} ${footerClassName}`}>
             <h2>Let&apos;s get in touch</h2>
             <label>Feel free to contact me about any opportunity, or just to chat about tech, snowboarding or anything else.</label>
-            
+            <div/>
             <Suspense fallback={<FooterLoading/>}>
                 <Fade>
                     <FooterContent/>
