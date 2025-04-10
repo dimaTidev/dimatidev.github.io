@@ -11,7 +11,17 @@ import { Suspense, useEffect } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
 import { useRouter, useSearchParams } from "next/navigation";
 
+// We wrapped the Page into suspence only because the page uses useSearchParams();
+// TODO: once useSearchParams() removed remove the Suspense wrapper around the page
 export default function Home(){
+  return (
+    <Suspense>
+      <Page/>
+    </Suspense>
+  )
+}
+
+function Page(){
   const router = useRouter();
   const searchParams = useSearchParams();
 
