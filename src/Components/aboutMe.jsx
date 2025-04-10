@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import LocationIcon from '@mui/icons-material/LocationOn'
 import { FileDownload } from "@mui/icons-material";
+import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
 
 export default async function AboutMe(params) {
   const dataRes = await apolloServerClient.query({
@@ -40,7 +41,8 @@ export default async function AboutMe(params) {
           <Typography variant="body1" className="u-text-secondary">Senior Full Stack Developer</Typography>
         </div>
       </div>
-      
+
+      <div/>
       <Typography variant="body1" className="u-text-secondary">{personData?.shortAboutMe}</Typography>
 
       {personData?.location && (
@@ -49,9 +51,8 @@ export default async function AboutMe(params) {
           <Typography variant="body1" className="u-text-secondary">{personData?.location}</Typography>
         </div>
       )}
-
+      <div/>
       <Socials linksArray={socialLinks} style={{flexGrow: "1"}}/>
-
       {queryData?.AboutMe.resumeUrl && (
         <Button href={queryData?.AboutMe.resumeUrl} variant="contained" color="primary" sx={{gap: "6px"}}>
           <FileDownload fontSize="small"/> Download Resume
