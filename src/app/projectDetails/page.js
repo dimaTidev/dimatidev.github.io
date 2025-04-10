@@ -15,6 +15,9 @@ import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Callout from "@/lib/UIComponents/callout";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
+import ChipGroup from "@/lib/techStackChips/chipsGroup";
+import { Alert, AlertTitle, Button, Link, Typography } from "@mui/material";
+import { ArrowOutward } from "@mui/icons-material";
 
 // To test markdown
 // const testMarkdown = `
@@ -144,20 +147,43 @@ async function Page({ projectId }){
         <>
             <div className={StylesCommon.pageWrapper}>
                 <div className={StylesCommon.page}>
+                    <div className={`${StylesCommon.leftSidePanel} ${Styles.leftSidePanel}`}></div>
+
+                    <div className={StylesCommon.mainPanel}>
+                        <div className="u-layout_flex-column gap-m">
+                            <Typography variant="h4" style={{marginTop: "auto"}}>{data.title}</Typography>
+                            {/* <Link href="www.google.com" className="u-layout_flex-row gap-m">
+                                www.google.com 
+                                <ArrowOutward fontSize="medium"/>
+                            </Link> */}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <Spacer size={SizeSpacer.M}/>
+
+            <div className={StylesCommon.pageWrapper}>
+                <div className={StylesCommon.page}>
 
                     <div className={`${StylesCommon.leftSidePanel} ${Styles.leftSidePanel}`}>
                         <AboutProject 
-                        
-                        projectData={{
-                            title: data.title,
-                            previewImageUrl: data.previewImage?.asset.url,
-                            collaborators: collaborators,
-                            platforms: platforms,
-                            techStack: techStack
-                        }}
-                        style={{position: "sticky", top: "20px"}}>
+                            projectData={{
+                                previewImageUrl: data.previewImage?.asset.url,
+                                collaborators: collaborators,
+                                platforms: platforms,
+                                techStack: techStack
+                            }}
+                            style={{position: "sticky", top: "20px"}}>
                             <Spacer size={SizeSpacer.S}/>
-                            {data.callOut && <Callout variant={Variant.WARNING}>{data.callOut}</Callout>}
+                            {/* {data.callOut && <Callout variant={Variant.WARNING}>{data.callOut}</Callout>} */}
+                            {data.callOut && (
+                                <Alert variant="outlined" severity="info">
+                                    <AlertTitle>Info</AlertTitle>
+                                    {data.callOut}
+                                </Alert>
+                            )}
                         </AboutProject>
                     </div>
                     
@@ -194,7 +220,6 @@ async function Page({ projectId }){
  * @param {*} params.children 
  * @param {Object} params.projectData 
  * @param {string} params.projectData.previewImageUrl
- * @param {string} params.projectData.title
  * @param {Array<{avatarImageUrl: string}>} params.projectData.collaborators
  * @param {Array<{imageUrl: string}>} params.projectData.platforms
  * @param {Array<{imageUrl: string, title: string}>} params.projectData.techStack
@@ -209,7 +234,6 @@ function AboutProject({children, projectData, ...params}){
                 </div>
                 {/* <p>Project ID: {id}</p> */}
                 <Spacer size={SizeSpacer.XXS}/>
-                <h2 style={{marginTop: "auto"}}>{projectData.title}</h2>
                 <hr/>
 
                 {projectData.platforms && (
@@ -218,7 +242,7 @@ function AboutProject({children, projectData, ...params}){
                         <p className="u-text-secondary">Platforms</p>
                             <div className="u-layout_flex-row u-layout_flex-start-center gap-xs">
                                 {projectData.platforms.map((el, id) => {
-                                    return <Chip key={id} icon={el.imageUrl} isWithoutLabel={true}/>;
+                                    return <Chip key={id} size="large" icon={el.imageUrl} isQuiet={true}/>;
                                 })}
                             </div>
                         </div>
@@ -241,11 +265,11 @@ function AboutProject({children, projectData, ...params}){
                     <>
                         <div className="u-layout_flex-row u-layout_flex-space-between-center gap-m">
                             <div className="u-text-secondary">Stack</div>
-                            <div className="u-layout_flex-row u-layout_flex-end-start gap-m u-layout_flex-wrap">
+                            <ChipGroup compact="medium">
                                 {projectData.techStack.map((el, id) => {
-                                    return <Chip key={id} icon={el.imageUrl} title={el.title}/>;
+                                    return <Chip key={id} size="large" icon={el.imageUrl} isQuiet={true}/>;
                                 })}
-                            </div>
+                            </ChipGroup>
                         </div>
                         <hr/>
                     </>

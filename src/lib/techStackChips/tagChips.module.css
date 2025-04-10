@@ -5,8 +5,11 @@
     justify-content: center;
     gap: 2px;
     
-    border-radius: 100%;
+    border-radius: 20px;
     padding: 2px 2px 2px 2px;
+
+    background-color: var(--background-color);
+    border: 1px solid var(--background-border-color);
 }
 
 .chipQuiet{
@@ -18,14 +21,55 @@
     position: relative;
     width: 25px;
     height: 25px;
+
+    z-index: 0;
 }
 
-.size_S{
+.size_small{
+    z-index: 0;
+    font-size: 11px;
+}
+
+.size_small .iconWrapper{
+    width: 11px;
+    height: 11px;
+}
+
+.size_medium{
+    z-index: 0;
     font-size: 12px;
-    padding: 0px 5px 0px 5px;
+    padding: 2px;
 }
 
-.size_S .icon{
+.size_medium .iconWrapper{
     width: 16px;
     height: 16px;
+}
+
+.size_large{
+    z-index: 0;
+    font-size: 14px;
+    padding: 3px;
+}
+
+.size_large .iconWrapper{
+    width: 22px;
+    height: 22px;
+}
+
+
+.compact_small > *{
+    margin-left: -6px;
+}
+
+.compact_medium > *{
+    margin-left: -10px;
+}
+
+.compact_large > *{
+    margin-left: -14px;
+}
+
+.compact > *:first-child {
+    margin-left: 0;
 }

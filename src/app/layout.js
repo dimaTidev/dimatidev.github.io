@@ -10,6 +10,13 @@ import Footer from "@/Components/footer";
 
 import { SkeletonTheme } from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { ThemeProvider } from "@mui/material/styles";
+
+// TODO: less important, figure out why having AppRouterCacheProvider breaks MUI paddings and margins
+// import CssBaseline from '@mui/material/CssBaseline';
+// import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+
+import theme from '@/theme';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,20 +37,29 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <div className="page-layout">
-          <SkeletonTheme
-              baseColor="#303030"
-              highlightColor="#353535"
-              borderRadius="0.5rem"
-              duration={1}
-          >
-            <Header className="u-page-padding"/>
-              {children}
-              <div className="page-expander"/>
-            <Footer className="u-page-padding"/>
-          </SkeletonTheme>
-        </div>
+        {/* <AppRouterCacheProvider options={{ enableCssLayer: true }}> */}
+          <ThemeProvider theme={theme}>
+            {/* <CssBaseline /> */}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <div className="page-layout">
+              <SkeletonTheme
+                  baseColor="#303030"
+                  highlightColor="#353535"
+                  borderRadius="0.5rem"
+                  duration={1}
+              >
+                <Header className="u-media-pc-only" headerClassName="u-align-self-center page-width"/>
+                  <div className="page-wrapper">
+                    <div className="page-width">
+                      {children}
+                    </div>
+                  </div>
+                  <div className="page-expander"/>
+                <Footer footerClassName="u-align-self-center page-width"/>
+              </SkeletonTheme>
+            </div>
+          </ThemeProvider>
+        {/* </AppRouterCacheProvider> */}
       </body>
     </html>
   );

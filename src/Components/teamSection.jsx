@@ -1,6 +1,7 @@
 import Styles from "./teamSection.module.css";
 import Socials from "@/lib/socials/socials";
 import Avatar from "@/lib/UIComponents/avatar";
+import { Height } from "@mui/icons-material";
 
 /**
  * @param {Object} params 
@@ -41,10 +42,11 @@ export function TeamSection({teamMembers}){
  */
 export function TeamMember({personData}){
     return (
-        <div className={Styles.teamMemberCard}>
+        <div className={Styles.teamMemberCard} style={{width: "200px"}}>
             <Avatar src={personData.avatarImageUrl} className={Styles.avatar}/>
-            <p className="u-text-secondary">{personData.fullName}</p>
-            {personData?.positions?.map((position, id) => <p key={id} style={{ whiteSpace: 'pre-line', textAlign: "center" }}>{position}</p>)}
+            <p className="" style={{fontSize: "14px", textOverflow: "ellipsis", overflow: "hidden" , whiteSpace: "nowrap", maxWidth: "100%"}}>{personData.fullName}</p>
+            {personData?.positions?.map((position, id) => <p key={id} className="u-text-secondary u-clamped-width" 
+            style={{ whiteSpace: 'pre-line', textAlign: "center", fontSize: "14px", lineHeight: "140%" }}>{position}</p>)}
             <Socials linksArray={personData.socialLinks}/>
         </div>
     )

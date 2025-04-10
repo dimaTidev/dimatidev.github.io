@@ -1,14 +1,14 @@
-import { person_daronRus, person_dimati } from "../persons/persons";
-import { stackCSharp, stackJavaScript, stackNextjs, stackReact, stackUnity } from "../etc/stack";
-import { platformMobile, platformPC, platformTablet, platformXR } from "../etc/platforms";
+import {  person_dimati } from "../persons/persons";
+import { stackCSharp, stackUnity } from "../etc/stack";
+import { platformXR } from "../etc/platforms";
 import { FixImagePath } from "@/lib/utils/imagePathUtils";
 
 const imagePath = FixImagePath("/data/projects/vrWeaponsShowcase");
 
 export const projectVrWeaponsShowcase = {
     id: { current: "VR_weapon_showcase" },
-    title: "VR weapon showcase",
-    description: `VR weapon interaction showcase. Built on WebXR Export. Currently available pistol. Other weapons are on the way.`,
+    title: "VR weapons",
+    description: `VR weapon interaction. Built on WebXR Export. Currently available pistol. Other weapons are on the way.`,
     orderRank: 103,
     team:[
         {

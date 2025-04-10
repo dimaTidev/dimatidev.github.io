@@ -9,3 +9,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 18px;
 }
+
+@media(max-width: 1024px){
+    .projectsGrid{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+}

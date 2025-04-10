@@ -1,23 +1,23 @@
 import Socials from "@/lib/socials/socials";
 import Styles from "./header.module.css";
 import { Suspense } from "react";
-import Link from "next/link";
-import { Size, Variant } from "@/lib/UIComponents/uiCommon";
-import Button from "@/lib/UIComponents/Button";
 import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
 import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
+import ButtonEmailMe from "./buttonEmailMe";
 
-export default async function Header({className}) {
+export default async function Header({className="", headerClassName=""}) {
   return (
-    <div className={`${Styles.header} ${className}`}>
+    <div className={`${Styles.headerBackground} ${className}`}>
+      <div className={`${Styles.header} ${headerClassName}`}>
         <Suspense fallback={<HeaderLoading/>}>
-            <Fade className={Styles.headerLayout}>
-                <HeaderContent/>
-            </Fade>
+          <Fade className={Styles.headerLayout}>
+              <HeaderContent/>
+          </Fade>
         </Suspense>
+      </div>
     </div>
   )
 }
@@ -38,9 +38,6 @@ async function HeaderContent(){
   const data = dataRes?.data?.AboutMe;
 
   const socialLinks = [];
-  if(data?.person?.email){
-    socialLinks.push(data.person.email);
-  }
 
   if(data?.person?.socialLinks){
     socialLinks.push(...data.person.socialLinks);
@@ -52,10 +49,8 @@ async function HeaderContent(){
 
         <Spacer size={SizeSpacer.S}/>
 
-        {data.resumeUrl && (
-          <Link href={data.resumeUrl}>
-            <Button src="icons/download.svg" size={Size.S} variant={Variant.SECONDARY}>Resume</Button>
-          </Link>
+        {data?.person?.email && (
+          <ButtonEmailMe email={data?.person?.email}/>
         )}
     </>
   )

@@ -5,14 +5,15 @@ import { gql } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
+import ButtonEmailMe from "./buttonEmailMe";
 
-export default async function Footer({className}) {
+export default async function Footer({className, footerClassName}) {
   return (
     <div className={`${Styles.base} ${className}`}>
-        <div className={Styles.container}>
+        <div className={`${Styles.container} ${footerClassName}`}>
             <h2>Let&apos;s get in touch</h2>
             <label>Feel free to contact me about any opportunity, or just to chat about tech, snowboarding or anything else.</label>
-            
+            <div/>
             <Suspense fallback={<FooterLoading/>}>
                 <Fade>
                     <FooterContent/>
@@ -44,9 +45,6 @@ async function FooterContent(){
     const data = dataRes?.data?.AboutMe;
 
     const socialLinks = [];
-    if(data?.person?.email){
-      socialLinks.push(data.person.email);
-    }
     if(data?.person?.socialLinks){
       socialLinks.push(...data.person.socialLinks);
     }
@@ -55,12 +53,10 @@ async function FooterContent(){
       <>
           <div className="u-layout_flex-column gap-xxl">
               <div className="u-layout_flex-row gap-l">
-                  {/* {data.resumeUrl && (
-                      <Link href={data.resumeUrl}>
-                          <ActionButton src="icons/download.svg" size={Size.S} variant={Variant.SECONDARY}>Resume</ActionButton>
-                      </Link>
-                  )} */}
                   <Socials linksArray={socialLinks}/>
+                  {data?.person?.email && (
+                    <ButtonEmailMe email={data?.person?.email}/>
+                  )}
               </div>
           </div>
       </>
