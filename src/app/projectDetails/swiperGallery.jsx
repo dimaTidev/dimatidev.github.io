@@ -102,6 +102,8 @@ export default function SwiperGallery({items}) {
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
           className="swiper-gallery-horizontal-thumbnails swiper-gallery-thumbnails"
+
+          // The style prevents the thumbnails to grow out of the screen
           style={{width: "2px", flexGrow: 1, justifyContent: "center"}}
         >
           {thumbnailsToDraw}

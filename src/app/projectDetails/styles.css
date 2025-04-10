@@ -112,8 +112,3 @@
 .mainSwiper:hover .swiper-gallery__main-navigation-button-wrapper{
   opacity: 1;
 }
-
-
-.swiper-gallery-thumbnails .swiper-wrapper{
-  justify-content: center;
-}
