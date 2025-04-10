@@ -98,7 +98,7 @@ function Page(){
     const queryData = dataRes;
 
     // TODO: return 404
-    if (!queryData) return <p>404</p>;
+    if (!queryData || queryData.allProject?.length == 0) return <p>404</p>;
 
     const data = queryData.allProject[0];
 

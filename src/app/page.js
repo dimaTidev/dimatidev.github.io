@@ -7,10 +7,19 @@
 import Styles from "./page.module.css";
 import AboutMe, { AboutMeLoading } from "@/Components/aboutMe";
 import AllProjectsSection from "@/Components/allProjectsSection";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Fade from "@/lib/UIComponents/fadeIn";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Home(){
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Redirect to the project page
+  useEffect(() => {
+    const projectToOpen = searchParams.get('project');
+    if (projectToOpen) router.replace(`projectDetails?id=${projectToOpen}`);
+  }, []);
 
   return (
     <>
