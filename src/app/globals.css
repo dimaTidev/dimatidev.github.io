@@ -1,13 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+html {
+  color-scheme: dark;
+  overflow-x: clip;
 }
 
 html,
@@ -28,7 +27,18 @@ body {
   min-height: 100vh;
   width: 100vw;
 
-  overflow-x: hidden;
+  contain: paint;
+}
+
+.page-width{
+  max-width: 1600px;
+  width: 75%;
+}
+
+@media (max-width: 1024px){
+  .page-width{
+    width: 90%;
+  }
 }
 
 .page-layout{
@@ -36,6 +46,14 @@ body {
   flex-direction: column;
   align-items: stretch;
   min-height: 100vh;
+}
+
+.page-wrapper{
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .page-expander{
@@ -54,6 +72,11 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+
   html {
     color-scheme: dark;
   }

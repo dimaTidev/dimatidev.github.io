@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Styles from "./fadeIn.module.css";
 
 export default function Fade({

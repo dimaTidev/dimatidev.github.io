@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -56,9 +58,6 @@ export default function Markdown({ rawSource, imageMap }) {
 function Image({width=256, height=256, alt="", title="", imageMap}){
     if(imageMap == undefined)
         return;
-
-    console.log("imageMap", typeof imageMap);
-    
 
     const src = imageMap.get(alt);
     if(src == undefined || src == "")

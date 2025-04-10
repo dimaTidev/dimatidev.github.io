@@ -1,30 +1,20 @@
-.base{
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.projectsGrid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
 .projectCardWrapper {
     position: relative;
     display: inline-block;
 }
 
 .projectCard{
-    background-color: #141414;
-    border: 1px solid #363636;
+    background-color: #202020;
+    border: 1px solid #262626;
 
     border-radius: 8px;
-    padding: 3px;
+    /* padding: 3px; */
 
     position: relative;
     z-index: 1;
     transition: transform 0.15s;
+
+    overflow: hidden;
 }
 
 .projectCard:hover{
@@ -55,13 +45,13 @@
 .glowEffect{
     content: "";
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     translate: -50% -50%;
-    width: 110%;
-    height: 125%;
+    width: 120%;
+    height: 120%;
     background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent);
-    opacity: 0.5;
+    opacity: 0.0;
     z-index: 0;
     filter: blur(60px);
 
@@ -70,17 +60,9 @@
     pointer-events: none;
 }
 
-/* .projectCardWrapper:hover .glowEffect{
-    opacity: 1;
-} */
-
 .projectBanner{
-    border-radius: 6px;
-    /* height: 400px; */
     aspect-ratio: 16 / 9;
     width: 100%;
-
-    /* background-color: darkgrey; */
 
     position: relative;
     overflow: hidden;
@@ -89,9 +71,30 @@
 .projectDescription{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
     
     padding: 12px;
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+.projectTitle{
+    font-size: 16px !important;
+}
+
+@media (max-width: 1024px){
+    .projectCard{
+        border-radius: 3px;
+    }
+
+    .projectDescription{
+        padding: 4px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .projectTitle{
+        font-size: 14px !important;
+    }
+    
 }

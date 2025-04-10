@@ -37,6 +37,14 @@
     flex-wrap: wrap;
 }
 
+.u-align-self-center{
+    align-self: center;
+}
+
+.u-position-relative{
+    position: relative;
+}
+
 .u-page-padding{
     padding-left: 64px;
     padding-right: 64px;
@@ -53,6 +61,11 @@
 
 .u-width-100{
     width: 100px;
+}
+
+.u-clamped-width {
+    min-width: 100%;
+    width: 0;
 }
 
 .u-height-1rem{
@@ -99,4 +112,25 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+.u-events-none{
+    pointer-events: none;
+}
+
+.u-events-all{
+    pointer-events: all;
+}
+
+
+@media (min-width: 1024px){
+    .u-media-mobile-only{
+        display: none !important;
+    }
+}
+
+@media (max-width: 1024px){
+    .u-media-pc-only{
+        display: none !important;
+    }
 }
