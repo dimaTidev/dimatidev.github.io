@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import LocationIcon from '@mui/icons-material/LocationOn'
 import { FileDownload } from "@mui/icons-material";
-import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
+import ButtonEmailMe from "./buttonEmailMe";
 
 export default async function AboutMe(params) {
   const dataRes = await apolloServerClient.query({
@@ -57,6 +57,10 @@ export default async function AboutMe(params) {
         <Button href={queryData?.AboutMe.resumeUrl} variant="contained" color="primary" sx={{gap: "6px"}}>
           <FileDownload fontSize="small"/> Download Resume
         </Button>
+      )}
+
+      {personData?.email && (
+        <ButtonEmailMe email={personData?.email} className="u-media-mobile-only"/>
       )}
     </div>
   )

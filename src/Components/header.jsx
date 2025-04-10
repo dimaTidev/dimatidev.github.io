@@ -8,6 +8,7 @@ import Fade from "@/lib/UIComponents/fadeIn";
 import Skeleton from "react-loading-skeleton";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
 import { MailOutline } from "@mui/icons-material";
+import ButtonEmailMe from "./buttonEmailMe";
 
 export default async function Header({className="", headerClassName=""}) {
   return (
@@ -51,10 +52,7 @@ async function HeaderContent(){
         <Spacer size={SizeSpacer.S}/>
 
         {data?.person?.email && (
-          <Button variant="outlined" color="white">
-            <MailOutline sx={{mr: 1}}/>
-            Contact Me
-          </Button>
+          <ButtonEmailMe email={data?.person?.email}/>
         )}
     </>
   )

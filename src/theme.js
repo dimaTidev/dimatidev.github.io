@@ -24,8 +24,12 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         containedPrimary: {
-          background: blue[600],
-          color: "#fff"
+          textTransform: 'none',
+          background: blue[700],
+          color: "#fff",
+          '&:hover': {
+            background: blue[800],
+          }
         },
         containedSecondary: {
           background: grey[700]
@@ -41,8 +45,8 @@ const theme = createTheme({
             borderColor: `#fff`,
             color: "#fff",
             '&:hover': {
-              borderColor: blue[600],
-              color: blue[600],
+              borderColor: `#aaa`,
+              // color: `#ccc`,
             }
           }
         }
