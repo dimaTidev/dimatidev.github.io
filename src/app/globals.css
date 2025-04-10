@@ -35,11 +35,30 @@ body {
   contain: paint;
 }
 
+.page-width{
+  max-width: 1600px;
+  width: 75%;
+}
+
+@media (max-width: 1024px){
+  .page-width{
+    width: 90%;
+  }
+}
+
 .page-layout{
   display: flex;
   flex-direction: column;
   align-items: stretch;
   min-height: 100vh;
+}
+
+.page-wrapper{
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .page-expander{

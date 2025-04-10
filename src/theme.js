@@ -31,6 +31,22 @@ const theme = createTheme({
           background: grey[700]
         },
       },
+      variants: [
+        {
+          props: { 
+            color: "white" 
+          },
+          style: {
+            textTransform: 'none',
+            borderColor: `#fff`,
+            color: "#fff",
+            '&:hover': {
+              borderColor: blue[600],
+              color: blue[600],
+            }
+          }
+        }
+      ]
       // variants: [
       //   {
       //     props: { 

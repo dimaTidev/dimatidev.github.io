@@ -37,6 +37,10 @@
     flex-wrap: wrap;
 }
 
+.u-align-self-center{
+    align-self: center;
+}
+
 .u-position-relative{
     position: relative;
 }
@@ -121,12 +125,12 @@
 
 @media (min-width: 1024px){
     .u-media-mobile-only{
-        display: none;
+        display: none !important;
     }
 }
 
 @media (max-width: 1024px){
     .u-media-pc-only{
-        display: none;
+        display: none !important;
     }
 }

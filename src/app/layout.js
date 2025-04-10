@@ -48,10 +48,14 @@ export default function RootLayout({ children }) {
                   borderRadius="0.5rem"
                   duration={1}
               >
-                <Header className="u-page-padding"/>
-                  {children}
+                <Header className="u-media-pc-only" headerClassName="u-align-self-center page-width"/>
+                  <div className="page-wrapper">
+                    <div className="page-width">
+                      {children}
+                    </div>
+                  </div>
                   <div className="page-expander"/>
-                <Footer className="u-page-padding"/>
+                <Footer footerClassName="u-align-self-center page-width"/>
               </SkeletonTheme>
             </div>
           </ThemeProvider>

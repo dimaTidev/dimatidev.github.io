@@ -14,22 +14,20 @@ export default async function Home({ searchParams }) {
 
   return (
     <>
-      <div className={Styles.pageWrapper}>
-        <div className={Styles.page}>
-          <div className={Styles.leftSidePanel}>
-            <Suspense fallback={<AboutMeLoading/>}>
-              <Fade style={{height: "100%"}}>
-                <AboutMe style={{position: "sticky", top: "20px"}}/>
-              </Fade>
-            </Suspense>
-          </div>
-          <div className={Styles.mainPanel}>
-                {/* 
-                // TODO: make the featured projects work
-                <FeaturedProjects style={{flexShrink: "0"}}/> 
-                */}
-                <AllProjectsSection/>
-          </div>
+      <div className={`${Styles.page}`}>
+        <div className={Styles.leftSidePanel}>
+          <Suspense fallback={<AboutMeLoading/>}>
+            <Fade style={{height: "100%"}}>
+              <AboutMe style={{position: "sticky", top: "20px"}}/>
+            </Fade>
+          </Suspense>
+        </div>
+        <div className={Styles.mainPanel}>
+              {/* 
+              // TODO: make the featured projects work
+              <FeaturedProjects style={{flexShrink: "0"}}/> 
+              */}
+              <AllProjectsSection/>
         </div>
       </div>
     </>
