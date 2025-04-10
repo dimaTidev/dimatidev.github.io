@@ -30,17 +30,10 @@ import { useSearchParams } from 'next/navigation'
 // `
 
 export default function ProjectDetailsPage() {
-
-    const searchParams = useSearchParams()
-    const id = searchParams.get('id')
-
-    // TODO: if no id, return 404
-    if(!id) return <p>404</p>;
-
     return(
         <Suspense fallback={<PageLoading/>}>
             <Fade>
-                <Page projectId={id}/>
+                <Page/>
             </Fade>
         </Suspense>
     )
@@ -92,10 +85,14 @@ function PageLoading(){
     );
 }
 
-function Page({ projectId }){
+function Page(){
+    const searchParams = useSearchParams()
+    const id = searchParams.get('id')
+
     const { data: dataRes } = useSuspenseQuery(GET_PROJECT, {
-        variables: { projectId: projectId },
-        returnPartialData: true
+        variables: { projectId: id },
+        returnPartialData: true,
+        skip: !id, // Prevents query from running if id is undefined
     });
 
     const queryData = dataRes;
