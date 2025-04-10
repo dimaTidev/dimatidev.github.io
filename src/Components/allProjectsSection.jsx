@@ -1,12 +1,16 @@
+'use client';
+// Since githubPages is static site hosting service we must convert the page into use client
+// TODO: once hosting changed remove use client and make it back to a server component
+// https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
 
 import Styles from "./allProjects.module.css";
 import { Suspense } from 'react'
 import Fade from "@/lib/UIComponents/fadeIn";
 import ProjectList, { ProjectListLoading } from "./projectComponents/projectList";
-import { gql } from "@apollo/client";
+import { gql, useSuspenseQuery } from "@apollo/client";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
 
-export default async function AllProjectsSection() {
+export default function AllProjectsSection() {
     return (
         <div className={Styles.base}>
             <h2>Projects</h2>
@@ -23,13 +27,13 @@ export default async function AllProjectsSection() {
     )
 }
 
-async function AllProjectsList() {
-    const dataRes = await apolloServerClient.query({
-        query: GET_PROJECTS,
+function AllProjectsList() {
+    const { data: dataRes } = useSuspenseQuery(GET_PROJECTS, {
+        returnPartialData: true
     });
 
     return (
-        <ProjectList allProjects={dataRes?.data?.allProject ?? []}/>
+        <ProjectList allProjects={dataRes?.allProject ?? []}/>
     )
 }
 

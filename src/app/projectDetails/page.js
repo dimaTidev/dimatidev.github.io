@@ -1,3 +1,8 @@
+'use client';
+// Since githubPages is static site hosting service we must convert the page into use client
+// TODO: once hosting changed remove use client and make it back to a server component
+// https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+
 import StylesCommon from "@/app/page.module.css";
 import Styles from "./page.module.css";
 import { Size, Variant } from "@/lib/UIComponents/uiCommon";
@@ -11,22 +16,25 @@ import Image from "next/image";
 import Collaborators from "@/lib/UIComponents/collaborators";
 import Spacer, { SizeSpacer } from "@/lib/UIComponents/Spacer";
 import Skeleton from "react-loading-skeleton";
-import { gql } from "@apollo/client";
+import { gql, useSuspenseQuery } from "@apollo/client";
 import Fade from "@/lib/UIComponents/fadeIn";
 import Callout from "@/lib/UIComponents/callout";
 import apolloServerClient from "@/lib/apollo/apolloServerClient";
 import ChipGroup from "@/lib/techStackChips/chipsGroup";
 import { Alert, AlertTitle, Button, Link, Typography } from "@mui/material";
 import { ArrowOutward } from "@mui/icons-material";
+import { useSearchParams } from 'next/navigation'
 
 // To test markdown
 // const testMarkdown = `
 // `
 
-export default async function ProjectDetailsPage({ searchParams }) {
+export default function ProjectDetailsPage() {
+
+    const searchParams = useSearchParams()
+    const id = searchParams.get('id')
 
     // TODO: if no id, return 404
-    const { id } = await searchParams
     if(!id) return <p>404</p>;
 
     return(
@@ -84,13 +92,13 @@ function PageLoading(){
     );
 }
 
-async function Page({ projectId }){
-    const dataRes = await apolloServerClient.query({
-        query: GET_PROJECT,
+function Page({ projectId }){
+    const { data: dataRes } = useSuspenseQuery(GET_PROJECT, {
         variables: { projectId: projectId },
+        returnPartialData: true
     });
 
-    const queryData = dataRes?.data;
+    const queryData = dataRes;
 
     // TODO: return 404
     if (!queryData) return <p>404</p>;

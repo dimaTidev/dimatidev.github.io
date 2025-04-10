@@ -1,3 +1,8 @@
+'use client';
+// Since githubPages is static site hosting service we must convert the page into use client
+// TODO: once hosting changed remove use client and make it back to a server component
+// https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+
 import Styles from "./projectCard.module.css";
 import Skeleton from "react-loading-skeleton";
 import Image from "next/image";
@@ -6,7 +11,7 @@ import Link from 'next/link';
 import { Typography } from "@mui/material";
 import ChipGroup from "@/lib/techStackChips/chipsGroup";
 
-export default async function ProjectCard({ projectData }){
+export default function ProjectCard({ projectData }){
     const glowColor = projectData?.color ?? "grey";
 
     const previewImageUrl = projectData.previewImage?.asset?.url;

@@ -18,6 +18,9 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import theme from '@/theme';
 
+// TODO: remove this component once hosting changed
+import ClientContexts from "./clientContexts";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -48,14 +51,17 @@ export default function RootLayout({ children }) {
                   borderRadius="0.5rem"
                   duration={1}
               >
-                <Header className="u-media-pc-only" headerClassName="u-align-self-center page-width"/>
-                  <div className="page-wrapper">
-                    <div className="page-width">
-                      {children}
+                <ClientContexts>
+                  <Header className="u-media-pc-only" headerClassName="u-align-self-center page-width"/>
+                    <div className="page-wrapper">
+                      <div className="page-width">
+                        {children}
+                      </div>
                     </div>
-                  </div>
-                  <div className="page-expander"/>
-                <Footer footerClassName="u-align-self-center page-width"/>
+                    <div className="page-expander"/>
+                  <Footer footerClassName="u-align-self-center page-width"/>
+                </ClientContexts>
+                
               </SkeletonTheme>
             </div>
           </ThemeProvider>

@@ -1,7 +1,11 @@
+'use client';
+// Since githubPages is static site hosting service we must convert the page into use client
+// TODO: once hosting changed remove use client and make it back to a server component
+// https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+
 import Styles from "./aboutMe.module.css";
 import Socials from "@/lib/socials/socials";
-import { gql } from '@apollo/client';
-import apolloServerClient from '@/lib/apollo/apolloServerClient';
+import { gql, useSuspenseQuery } from '@apollo/client';
 import Skeleton from 'react-loading-skeleton'
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -10,12 +14,10 @@ import LocationIcon from '@mui/icons-material/LocationOn'
 import { FileDownload } from "@mui/icons-material";
 import ButtonEmailMe from "./buttonEmailMe";
 
-export default async function AboutMe(params) {
-  const dataRes = await apolloServerClient.query({
-    query: GET_ABOUT_ME,
-  });
+export default function AboutMe(params) {
+  const { data: dataRes } = useSuspenseQuery(GET_ABOUT_ME);
 
-  const queryData = dataRes?.data;
+  const queryData = dataRes;
 
   const personData = queryData?.AboutMe.person;
 
